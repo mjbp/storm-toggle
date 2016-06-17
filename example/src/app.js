@@ -1,24 +1,20 @@
-var UTILS = {
-		attributelist: require('storm-attributelist')
-	},
-	UI = (function(w, d) {
-		'use strict';
+var STORM = (function(w, d) {
+        'use strict';
 
-		var Toggle = require('./libs/storm-toggle'),
-			init = function() {
-				Toggle.init('.js-toggle');
-			};
+        var Geocoder = require('./libs/storm-geocoder'),
+            init = function() {
+                console.log(Geocoder);
+                Geocoder.init({
+                    cb: function(){
+                        this.find('Edinburgh');
+                    }
+                });
+            };
 
-		return {
-			init: init
-		};
+        return {
+            init: init
+        };
 
-	})(window, document, undefined);
+    })(window, document, undefined);
 
-
-global.STORM = {
-    UTILS: UTILS,
-    UI: UI
-};
-
-if('addEventListener' in window) window.addEventListener('DOMContentLoaded', STORM.UI.init, false);
+if('addEventListener' in window) window.addEventListener('DOMContentLoaded', STORM.init, false);
