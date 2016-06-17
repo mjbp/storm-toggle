@@ -18,12 +18,12 @@ Progressive enhancement-lead, accessible state toggling. Toggles classes for CSS
     
 ##Usage
 ```
-npm install storm-toggler
+npm install storm-toggle
 ```
 
 ```js
-var Toggler = require('storm.toggler');
-Toggler.init(document.querySelectorAll('.js-toggle', {delay: 360}));
+var Toggle = require('storm-toggle');
+Toggle.init(document.querySelectorAll('.js-toggle', {delay: 360}));
 
 ```
 
