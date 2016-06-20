@@ -1,6 +1,6 @@
 /**
  * @name storm-geocoder: Google Maps API geocoder loader and abstraction layer
- * @version 0.1.0: Fri, 17 Jun 2016 16:38:09 GMT
+ * @version 0.1.0: Mon, 20 Jun 2016 09:22:45 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
@@ -21,7 +21,8 @@
             script.src = src;
             script.onload = function() {
                 window.clearTimeout(timer);
-            };
+                this.loaded = true;
+            }.bind(this);
             document.body.appendChild(script);
         },
         defaults = {
@@ -29,11 +30,15 @@
         },
         StormGeocoder = {
             init: function (fn) {
-                if (!global.google) { this.loadAPI(fn); }
+                this.loaded = false;
+                if (!global.google) { 
+                    this.loadAPI(fn);
+                    return this;
+                }
                 else { fn.apply(this, arguments); }
             },
             loadAPI: function (fn) {
-                var API = 'http://maps.googleapis.com/maps/api/js?callback=GoogleMapsAPILoaded' + (!!this.settings.key && '&key=' + this.settings.key),
+                var API = 'http://maps.googleapis.com/maps/api/js?callback=GoogleMapsAPILoaded' + (!!this.settings.key && '&key=' + this.settings.key || ''),
                     GoogleMapsAPILoaded = function () {
                         delete window.GoogleMapsAPILoaded;
                         this.settings.cb && this.settings.cb.apply(this, arguments);
@@ -41,9 +46,13 @@
 
                 window.GoogleMapsAPILoaded = GoogleMapsAPILoaded;
 
-                loadScript(API);
+                loadScript.call(this, API);
             },
             find: function(q, cb){
+                if (!this.loaded) { 
+                    console.log('not yet');
+                    return;
+                }
                 var geocoder = new global.google.maps.Geocoder();
                  
                 geocoder.geocode({ 
@@ -56,11 +65,9 @@
         instance = Object.assign(Object.create(StormGeocoder), {
             settings: Object.assign({}, defaults, opts)
         });
-        instance.init();
+        return instance.init();
     }
 
-    return {
-        init: init
-    };
+    return init();
 
  }));

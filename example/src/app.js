@@ -3,18 +3,23 @@ var STORM = (function(w, d) {
 
         var Geocoder = require('./libs/storm-geocoder'),
             init = function() {
-                console.log(Geocoder);
+                Geocoder.find('Edinburgh');
+                /*
                 Geocoder.init({
                     cb: function(){
                         this.find('Edinburgh');
                     }
                 });
+                */
             };
 
         return {
-            init: init
+            init: init,
+            geocoder: Geocoder
         };
 
     })(window, document, undefined);
+
+window.STORM = STORM;
 
 if('addEventListener' in window) window.addEventListener('DOMContentLoaded', STORM.init, false);
