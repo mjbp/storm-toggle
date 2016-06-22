@@ -7,7 +7,8 @@
 }(this, function() {
     'use strict';
 
-    var instance,
+    var MAX_ATTEMPTS = 250,
+        instance,
         loadScript = function(src) {
             var script = document.createElement('script'),
                 timer = window.setTimeout(function() {
@@ -16,7 +17,6 @@
             script.src = src;
             script.onload = function() {
                 window.clearTimeout(timer);
-                this.loaded = true;
             }.bind(this);
             document.body.appendChild(script);
         },
@@ -25,9 +25,9 @@
         },
         StormGeocoder = {
             init: function (fn) {
-                this.loaded = false;
-                if (!global.google) { 
+                if (!window.google) { 
                     this.loadAPI(fn);
+                    console.log(this);
                     return this;
                 }
                 else { fn.apply(this, arguments); }
@@ -43,24 +43,52 @@
 
                 loadScript.call(this, API);
             },
+            await: function(cb, fn){
+                var attempts = 0,
+                    timer = function(){
+                        var timeout = window.setTimeout(function(){
+                                attempts++;
+                                window.clearInterval(timeout);
+                                if(attempts === MAX_ATTEMPTS) {
+                                    cb('Google Maps API has timed out', null);
+                                    return;
+                                }
+                                if(!window.google){
+                                    timer();
+                                } else {
+                                    fn.apply(this);
+                                }
+                            }.bind(this), 16);
+                    };
+                timer();
+            },
             find: function(q, cb){
-                if (!this.loaded) { 
-                    console.log('not yet');
-                    return;
+                var fn = function(){
+                        var geocoder = new window.google.maps.Geocoder();
+                    
+                        geocoder.geocode({ 
+                            address: q
+                        }, function(res, status){
+                            if (status !== global.google.maps.GeocoderStatus.OK) { 
+                                cb(status, res);
+                                return;
+                            }
+                            cb(null, res);
+                        });
+                };
+                if(!window.google) {
+                    this.await(cb, fn);
+                } else {
+                    fn();
                 }
-                var geocoder = new global.google.maps.Geocoder();
-                 
-                geocoder.geocode({ 
-                        address: q
-                    }, cb);
+                
             }
         };
 
     function init(opts) {
-        instance = Object.assign(Object.create(StormGeocoder), {
+        return Object.assign(Object.create(StormGeocoder), {
             settings: Object.assign({}, defaults, opts)
-        });
-        return instance.init();
+        }).init();
     }
 
     return init();

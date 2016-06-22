@@ -22,10 +22,6 @@
             box-sizing:border-box;
             font-family: 'Roboto', sans-serif;
         }
-        html,
-        body {
-            height:100%;
-        }
         h1,
         h2,
         h3 {
@@ -46,9 +42,68 @@
             font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
             padding:.25rem;
         }
+        main {
+            width:50%;
+            margin:50px auto 0 auto;
+        }
+        form {
+            background:#f1f1f1;
+            padding:1.5rem;
+        }
+        label {
+            font-family: 'Roboto Condensed', sans-serif;
+            margin-bottom:.5rem;
+            display: block;
+            cursor:pointer;
+            text-align: left;
+        }
+        input[type=text]{
+            width: 100%;
+            padding:.5rem;
+            border:0 none;
+            background:#fff;
+            border-bottom:1px solid #ccc;
+            cursor:pointer;
+            margin-bottom: 1.5rem;
+            font-size:1rem;
+        }
+        input[type=text]:focus{
+            border-bottom:1px solid #191919;
+            outline:0 none;
+        }
+        .row {
+            text-align: right;
+        }
+        .btn {
+            border:0 none;
+            background:#191919;
+            color:#fff;
+            font-size:1rem;
+            padding:.5rem;
+        }
+        ul,
+        p {
+            padding:0;
+            margin:30px 0;
+        }
+        li {
+            margin:0 0 .75rem 0;
+            padding:0;
+        }
     </style>
 </head>
 <body>
+    <main>
+        <form class="js-geocode" action="">
+            <div class="row">
+                <label for="q">Geocoder query</label>
+                <input id="q" class="field" type="text" placeholder="e.g. Edinburgh" name="q" required>
+            </div>
+            <div class="row">
+                <input type="submit" class="btn" value="Search">
+            </div>
+        </form>
+    </main>
     <script src="./js/app.js"></script>
 </body>
 </html>
