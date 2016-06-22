@@ -1,6 +1,6 @@
 /**
- * @name storm-geocoder: Google Maps API geocoder loader and abstraction layer
- * @version 0.1.0: Wed, 22 Jun 2016 13:14:46 GMT
+ * @name storm-geocoder: Google Maps API geocoder loader and wrapper
+ * @version 0.1.0: Wed, 22 Jun 2016 13:37:01 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
@@ -96,6 +96,6 @@
         }).init();
     }
 
-    return init();
+    return { init: init };
 
  }));

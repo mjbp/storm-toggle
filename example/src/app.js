@@ -4,7 +4,7 @@ var STORM = (function(w, d) {
         var STATUS_CODES = {
                 ZERO_RESULTS: 'ZERO_RESULTS'
             },
-            Geocoder = require('./libs/storm-geocoder'),
+            Geocoder = require('./libs/storm-geocoder').init(),
             init = function() {
                 var resultsWrapperTemplate = '<ul class="js-results">{{results}}</ul>',
                     resultTemplate = '<li>{{result}}</li>';
