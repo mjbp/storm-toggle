@@ -1,5 +1,6 @@
-{"name": "storm-toggle",
-  "version": "0.2.0",
+{
+  "name": "storm-toggle",
+  "version": "0.3.0",
   "description": "Toggle UI state accessibly",
   "author": "stormid",
   "license": "MIT",
