@@ -1,12 +1,12 @@
 var UTILS = {
 		attributelist: require('storm-attributelist')
 	},
-	UI = (function(w, d) {
+    UI = (function(w, d) {
 		'use strict';
 
-		var Toggle = require('./libs/storm-toggle'),
+		var Toggler = require('./libs/storm-toggle'),
 			init = function() {
-				Toggle.init('.js-toggle');
+				global.STORM.Togglers = Toggler.init('.js-toggle');
 			};
 
 		return {
@@ -15,10 +15,10 @@ var UTILS = {
 
 	})(window, document, undefined);
 
-
 global.STORM = {
     UTILS: UTILS,
     UI: UI
 };
+
 
 if('addEventListener' in window) window.addEventListener('DOMContentLoaded', STORM.UI.init, false);

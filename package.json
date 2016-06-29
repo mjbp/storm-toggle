@@ -1,17 +1,16 @@
-{
-  "name": "storm-toggle",
+{"name": "storm-toggle",
   "version": "0.2.0",
   "description": "Toggle UI state accessibly",
   "author": "stormid",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjbp/storm-toggle.git"
+    "url": "https://github.com/mjbp/storm-geocoder.git"
   },
   "bugs": {
-    "url": "https://github.com/mjbp/storm-toggle/issues"
+    "url": "https://github.com/mjbp/storm-geocoder/issues"
   },
-  "main": "dist/storm-toggle.min.js",
+  "main": "dist/storm-geocoder.min.js",
   "devDependencies": {
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.0",
@@ -25,12 +24,8 @@
   },
   "keywords": [
     "stormid",
-    "toggle",
-    "toggler",
     "component",
-    "UI"
-  ],
-  "dependencies": {
-    "storm-attributelist": "^0.2.0"
-  }
+    "geolocation",
+    "geocoder"
+  ]
 }
