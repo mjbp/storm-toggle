@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjbp/storm-geocoder.git"
+    "url": "https://github.com/mjbp/storm-toggle.git"
   },
   "bugs": {
-    "url": "https://github.com/mjbp/storm-geocoder/issues"
+    "url": "https://github.com/mjbp/storm-toggle/issues"
   },
-  "main": "dist/storm-geocoder.min.js",
+  "main": "dist/storm-toggle.min.js",
   "devDependencies": {
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.0",
