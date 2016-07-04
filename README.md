@@ -1,32 +1,14 @@
-#Storm Google Maps
+#Storm Toggle
 
-Google Maps API geocoder loader and wrapper
+Toggle UI state accessibly
 
 
 ##Usage
 ```
-npm install storm-geocoder
+npm install storm-toggle
 ```
 
 ```
-var Geocoder = require('storm-geocoder').init();
-```
-
-Or, with Google Maps API key 'XXXXXXXXXXXXX'
-
-```
-var Geocoder = require('storm-geocoder').init({
-    key: 'XXXXXXXXXXXXX'
-});
-```
-
-```
-Geocoder.find('Edinburgh', function(err, res){
-    if(!err){
-        console.warn(err);
-        return;
-    }
-    console.log(res);
-});
-
+var Toggle = require('storm-toggle');
+Toggle.init('.js-toggle');
 ```
