@@ -25,8 +25,8 @@
 
                 this.open = false;
         		this.classTarget = (!this.settings.targetLocal) ? document.documentElement : this.node.parentNode;
-                this.statusClass = (!this.settings.targetLocal) ? ['on--', this.node.getAttribute('id')].join('') : this.statusClass = 'active';
-                this.animatingClass = (!this.settings.targetLocal) ? ['animating--', this.node.getAttribute('id')].join('') : this.statusClass = 'animating';
+                this.statusClass = (!this.settings.targetLocal) ? ['on--', this.node.getAttribute('id')].join('') : 'active';
+                this.animatingClass = (!this.settings.targetLocal) ? ['animating--', this.node.getAttribute('id')].join('') : 'animating';
         
 				this.initAria();
 				

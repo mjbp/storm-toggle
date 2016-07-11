@@ -127,9 +127,11 @@
         </ul>
     </nav>
     <button style="position:absolute;right:20px;top:50%;" class="js-toggle-trigger" role="button" aria-controls="navigation" aria-expanded="false">Toggle two</button>
-    
-    <div id="test" class="js-toggle" data-toggle="js-toggle-trigger-2" aria-hidden="true"></div>
-    <button style="position:absolute;right:20px;top:70%;" class="js-toggle-trigger-2" role="button" aria-controls="test" aria-expanded="false">Toggle two</button>
+
+    <div style="position:absolute;right:20px;top:60%;">
+        <button class="js-toggle-local-trigger">Local toggle</button>
+        <div class="js-toggle-local" data-toggle="js-toggle-local-trigger"></div>
+    </div>
 
     <!--
 	<main>

@@ -7,6 +7,7 @@ var UTILS = {
 		var Toggler = require('./libs/storm-toggle'),
 			init = function() {
 				global.STORM.Togglers = Toggler.init('.js-toggle');
+				global.STORM.LocalTogglers = Toggler.init('.js-toggle-local', {targetLocal: true});
 			};
 
 		return {

@@ -1,6 +1,6 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 0.2.0: Wed, 29 Jun 2016 12:42:43 GMT
+ * @version 0.3.2: Mon, 11 Jul 2016 08:20:24 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
@@ -30,8 +30,8 @@
 
                 this.open = false;
         		this.classTarget = (!this.settings.targetLocal) ? document.documentElement : this.node.parentNode;
-                this.statusClass = (!this.settings.targetLocal) ? ['on--', this.node.getAttribute('id')].join('') : this.statusClass = 'active';
-                this.animatingClass = (!this.settings.targetLocal) ? ['animating--', this.node.getAttribute('id')].join('') : this.statusClass = 'animating';
+                this.statusClass = (!this.settings.targetLocal) ? ['on--', this.node.getAttribute('id')].join('') : 'active';
+                this.animatingClass = (!this.settings.targetLocal) ? ['animating--', this.node.getAttribute('id')].join('') : 'animating';
         
 				this.initAria();
 				
