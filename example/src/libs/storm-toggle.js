@@ -1,6 +1,6 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 0.3.2: Mon, 11 Jul 2016 08:20:24 GMT
+ * @version 0.4.0: Thu, 21 Jul 2016 12:19:16 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
@@ -50,13 +50,9 @@
 						'aria-expanded' : 'false'
 					});
 				}.bind(this));
-				STORM.UTILS.attributelist.set(this.node, {
-					'aria-hidden': true
-				});
 			},
 			toggleAttributes: function(){
                 this.open = !this.open;
-                STORM.UTILS.attributelist.toggle(this.node, 'aria-hidden');
                 this.togglers.forEach(function(toggler){
                     STORM.UTILS.attributelist.toggle(toggler, 'aria-expanded');
                 });

@@ -45,13 +45,9 @@
 						'aria-expanded' : 'false'
 					});
 				}.bind(this));
-				STORM.UTILS.attributelist.set(this.node, {
-					'aria-hidden': true
-				});
 			},
 			toggleAttributes: function(){
                 this.open = !this.open;
-                STORM.UTILS.attributelist.toggle(this.node, 'aria-hidden');
                 this.togglers.forEach(function(toggler){
                     STORM.UTILS.attributelist.toggle(toggler, 'aria-expanded');
                 });
