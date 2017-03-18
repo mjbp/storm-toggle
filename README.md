@@ -1,9 +1,9 @@
-#Storm Toggle
+# Storm Toggle
 
 Toggle UI state accessibly
 
 
-##Usage
+## Usage
 ```
 npm install storm-toggle
 ```

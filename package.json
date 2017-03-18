@@ -1,7 +1,7 @@
 {
   "name": "storm-toggle",
   "version": "0.4.0",
-  "description": "Toggle UI state accessibly",
+  "description": "Alternative toggler implementation",
   "author": "stormid",
   "license": "MIT",
   "repository": {
@@ -26,7 +26,6 @@
   "keywords": [
     "stormid",
     "component",
-    "geolocation",
-    "geocoder"
+    "toggle"
   ]
 }
