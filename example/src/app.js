@@ -1,25 +1,10 @@
-var UTILS = {
-		attributelist: require('storm-attributelist')
-	},
-    UI = (function(w, d) {
-		'use strict';
+import Toggle from './libs/component';
 
-		var Toggler = require('./libs/storm-toggle'),
-			init = function() {
-				global.STORM.Togglers = Toggler.init('.js-toggle');
-				global.STORM.LocalTogglers = Toggler.init('.js-toggle-local', {targetLocal: true});
-			};
+const onDOMContentLoadedTasks = [() => {
+	let toggle = Toggle.init('.js-toggle');
+	let localToggle = Toggle.init('.js-toggle-local', { local: true });
+	console.log(toggle);
 
-		return {
-			init: init
-		};
-
-	})(window, document, undefined);
-
-global.STORM = {
-    UTILS: UTILS,
-    UI: UI
-};
-
-
-if('addEventListener' in window) window.addEventListener('DOMContentLoaded', STORM.UI.init, false);
+}];
+    
+if('addEventListener' in window) window.addEventListener('DOMContentLoaded', () => { onDOMContentLoadedTasks.forEach(fn => fn()); });

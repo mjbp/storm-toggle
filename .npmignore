@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+src
+test
+example
+coverage
+node_modules
+yarn.lock
+README.md
+.travis.yml
+.jshintrc
+.eslintrc.json
+.editorconfig

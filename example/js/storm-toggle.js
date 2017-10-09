@@ -1,9 +1,10 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 0.4.0: Thu, 21 Jul 2016 12:19:16 GMT
+ * @version 0.5.0: Mon, 09 Oct 2017 14:35:50 GMT
  * @author stormid
  * @license MIT
- */(function(root, factory) {
+ */
+(function(root, factory) {
   if (typeof exports === 'object') {
     module.exports = factory();
   } else {
