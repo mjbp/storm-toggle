@@ -6,11 +6,9 @@
 
 Accessible DOM state toggling for off-canvas and show/hide UI patterns.
 
-## Example
-[https://mjbp.github.io/storm-toggle](https://mjbp.github.io/storm-toggle)
-
 ## Usage
 HTML
+=======
 ```
 <button class="js-toggle-btn">Menu</button>
 <nav class="js-toggle" data-toggle="js-toggle-btn">...</nav>
