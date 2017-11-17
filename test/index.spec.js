@@ -4,7 +4,7 @@ import Toggle from '../dist/storm-toggle.standalone';
 
 const html = `<a href="#target-1" class="js-toggle_btn">Test toggle</a>
 			 <a href="#target-1" class="js-toggle_btn">Test toggle</a>
-             <div id="target-1" class="js-toggle" data-toggle="js-toggle_btn"></div>
+             <div id="target-1" class="js-toggle" data-toggle="js-toggle_btn"><div tabindex="0">Test focusable content</div><div tabindex="0">Test focusable content</div><div tabindex="0">Test focusable content</div></div>
              <a href="#target-2" class="js-toggle_btn-2">Test toggle</a>
              <div id="target-2" class="js-toggle" data-toggle="js-toggle_btn-2"></div>
 			 <a href="#target-3" class="js-toggle_btn-3">Test toggle</a>
@@ -16,7 +16,9 @@ const html = `<a href="#target-1" class="js-toggle_btn">Test toggle</a>
 
 document.body.innerHTML = html;
 
-let Toggles = Toggle.init('.js-toggle'),
+let Toggles = Toggle.init('.js-toggle', {
+		trapTab: true
+	}),
 	TogglesWithDelay = Toggle.init('.js-toggle-2', {
 		delay: 100,
 		callback(){}
@@ -73,7 +75,7 @@ describe('Initialisation', () => {
 			TogglesLocal[0].toggles[0].click();
 			setTimeout(() => {
 				TogglesLocal.from(TogglersLocal[0].toggles[0].parentNode.classList).should.not.containEql('active');
-			}, 1000);
+			});
 		});
 	});
 	
@@ -86,6 +88,83 @@ describe('Initialisation', () => {
 		setTimeout(() => {
 			Toggles[0].toggles[1].getAttribute('aria-expanded').should.equal(true);
 		});
+	});
+
+	it('should attach keydown eventListener to document when trapTab is set', () => {
+		
+		Toggles[0].toggles[0].click();
+		setTimeout(() => {
+			//dispatch tab
+			document.dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 'Tab',
+					keyCode: 9
+				})
+			);
+
+			//dispatch shift-tab
+			document.dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 'Tab',
+					keyCode: 9,
+					shiftKey: true
+				})
+			);
+
+			//dispatch escape
+			document.dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 27,
+					keyCode: 27
+				})
+			);
+
+			//dispatch out of range keyCode event on toggle
+			Toggles[0].toggles[0].dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 100,
+					keyCode: 100
+				})
+			);
+		});
+
+		Toggles[0].toggles[0].click();
+		setTimeout(() => {
+			//dispatch tab
+			document.dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 'Tab',
+					keyCode: 9
+				})
+			);
+
+			//dispatch shift-tab
+			document.dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 'Tab',
+					keyCode: 9,
+					shiftKey: true
+				})
+			);
+
+			//dispatch escape
+			document.dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 27,
+					keyCode: 27
+				})
+			);
+
+			//dispatch out of range keyCode event on toggle
+			Toggles[0].toggles[0].dispatchEvent(
+				new window.KeyboardEvent('keydown', {
+					key : 100,
+					keyCode: 100
+				})
+			);
+		});
+
+	
 	});
 
 });
