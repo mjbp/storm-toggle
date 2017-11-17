@@ -44,7 +44,7 @@ HTML
     <div class="js-toggle__local" data-toggle="js-toggle__btn"></div>
 </div>
 ```
-```
+
 CSS
 ```
 .child {
