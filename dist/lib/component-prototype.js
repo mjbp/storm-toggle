@@ -15,6 +15,7 @@ export default {
 		this.animatingClass = !this.settings.local ? `animating--${this.node.getAttribute('id')}` : 'animating';
 
 		this.initToggles();
+		this.settings.startOpen && this.toggle();
 
 		return this;
 	},

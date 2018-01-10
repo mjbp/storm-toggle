@@ -1,6 +1,6 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 0.5.0: Mon, 09 Oct 2017 14:41:58 GMT
+ * @version 1.0.2: Wed, 10 Jan 2018 15:02:37 GMT
  * @author stormid
  * @license MIT
  */
@@ -29,7 +29,7 @@ var defaults = {
 	local: false,
 	prehook: false,
 	callback: false,
-	focus: true,
+	focus: false,
 	trapTab: false
 };
 
@@ -50,6 +50,7 @@ var componentPrototype = {
 		this.animatingClass = !this.settings.local ? 'animating--' + this.node.getAttribute('id') : 'animating';
 
 		this.initToggles();
+		this.settings.startOpen && this.toggle();
 
 		return this;
 	},

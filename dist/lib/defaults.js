@@ -4,6 +4,6 @@ export default {
 	local: false,
 	prehook: false,
 	callback: false,
-	focus: true,
+	focus: false,
 	trapTab: false
 };
