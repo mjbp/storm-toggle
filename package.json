@@ -15,7 +15,7 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp",
-    "test": "istanbul cover _mocha && codecov",
+    "test": "istanbul cover node_modules/mocha/bin/_mocha && codecov",
     "test:watch": "NODE_ENV=test mocha --watch"
   },
   "browserify": {

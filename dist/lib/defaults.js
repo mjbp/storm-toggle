@@ -5,5 +5,6 @@ export default {
 	prehook: false,
 	callback: false,
 	focus: false,
-	trapTab: false
+	trapTab: false,
+	closeOnBlur: false
 };

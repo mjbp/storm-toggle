@@ -10,6 +10,7 @@ export default {
 		this.isOpen = false;
 		if(this.settings.focus) this.focusableChildren = this.getFocusableChildren();
 		if(this.settings.trapTab) this.boundKeyListener = this.keyListener.bind(this);
+		if(this.settings.closeOnBlur) this.boundFocusInListener = this.focusInListener.bind(this);
 		this.classTarget = (!this.settings.local) ? document.documentElement : this.node.parentNode;
 		this.statusClass = !this.settings.local ? `on--${this.node.getAttribute('id')}` : 'active';
 		this.animatingClass = !this.settings.local ? `animating--${this.node.getAttribute('id')}` : 'animating';
@@ -79,6 +80,19 @@ export default {
 		}
 		if (this.isOpen && e.keyCode === 9) this.trapTab(e);
 	},
+	focusInListener: function(e){
+		if(
+			!this.node.contains(e.target) && 
+			!this.toggles.reduce((acc, toggle) => {
+				if(toggle === e.target) acc = true;
+				return acc;
+			}, false)
+		) this.toggle();
+	},
+	manageBlurClose: function(){
+		if(!this.isOpen) document.addEventListener('focusin', this.boundFocusInListener);
+		else document.removeEventListener('focusin', this.boundFocusInListener);
+	},
 	toggle: function(e){
 		let delay = this.classTarget.classList.contains(this.statusClass) ?  this.settings.delay : 0;
 
@@ -90,6 +104,7 @@ export default {
 		
 		window.setTimeout(() => {
 			(!!this.settings.focus && this.focusableChildren) && this.manageFocus();
+			!!this.settings.closeOnBlur && this.manageBlurClose();
 			this.toggleAttributes();
 			this.toggleState();
 			(!!this.settings.callback && typeof this.settings.callback === 'function') && this.settings.callback.call(this);

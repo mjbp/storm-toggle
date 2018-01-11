@@ -17,7 +17,9 @@ const html = `<a href="#target-1" class="js-toggle_btn">Test toggle</a>
 document.body.innerHTML = html;
 
 let Toggles = Toggle.init('.js-toggle', {
-		trapTab: true
+		trapTab: true,
+		closeOnBlur: true,
+		focus: true
 	}),
 	TogglesWithDelay = Toggle.init('.js-toggle-2', {
 		delay: 100,
@@ -90,6 +92,7 @@ describe('Initialisation', () => {
 		});
 	});
 
+	/*
 	it('should attach keydown eventListener to document when trapTab is set', () => {
 		
 		Toggles[0].toggles[0].click();
@@ -163,8 +166,18 @@ describe('Initialisation', () => {
 				})
 			);
 		});
+	});*/
 
-	
+
+	it('should create focusableChildren array when initialised with focus setting', () => {
+		should(Toggles[0].focusableChildren)
+		.Array()
 	});
 
 });
+
+
+// new window.KeyboardEvent('keydown', {
+// 	key : 27,
+// 	keyCode: 27
+// })

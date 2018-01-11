@@ -4,6 +4,7 @@ export default {
 	local: false,
 	prehook: false,
 	callback: false,
-	focus: true,
-	trapTab: false
+	focus: false,
+	trapTab: false,
+	closeOnBlur: false
 };

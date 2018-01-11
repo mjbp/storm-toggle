@@ -1,6 +1,6 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 1.0.2: Wed, 10 Jan 2018 15:02:37 GMT
+ * @version 1.1.0: Thu, 11 Jan 2018 11:22:12 GMT
  * @author stormid
  * @license MIT
  */
@@ -30,7 +30,8 @@ var defaults = {
 	prehook: false,
 	callback: false,
 	focus: false,
-	trapTab: false
+	trapTab: false,
+	closeOnBlur: false
 };
 
 var TRIGGER_EVENTS = ['click', 'keydown'];
@@ -45,6 +46,7 @@ var componentPrototype = {
 		this.isOpen = false;
 		if (this.settings.focus) this.focusableChildren = this.getFocusableChildren();
 		if (this.settings.trapTab) this.boundKeyListener = this.keyListener.bind(this);
+		if (this.settings.closeOnBlur) this.boundFocusInListener = this.focusInListener.bind(this);
 		this.classTarget = !this.settings.local ? document.documentElement : this.node.parentNode;
 		this.statusClass = !this.settings.local ? 'on--' + this.node.getAttribute('id') : 'active';
 		this.animatingClass = !this.settings.local ? 'animating--' + this.node.getAttribute('id') : 'animating';
@@ -121,6 +123,15 @@ var componentPrototype = {
 		if (this.isOpen && e.keyCode === 9) this.trapTab(e);
 	},
 
+	focusInListener: function focusInListener(e) {
+		if (!this.node.contains(e.target) && !this.toggles.reduce(function (acc, toggle) {
+			if (toggle === e.target) acc = true;
+			return acc;
+		}, false)) this.toggle();
+	},
+	manageBlurClose: function manageBlurClose() {
+		if (!this.isOpen) document.addEventListener('focusin', this.boundFocusInListener);else document.removeEventListener('focusin', this.boundFocusInListener);
+	},
 	toggle: function toggle(e) {
 		var _this3 = this;
 
@@ -134,6 +145,7 @@ var componentPrototype = {
 
 		window.setTimeout(function () {
 			!!_this3.settings.focus && _this3.focusableChildren && _this3.manageFocus();
+			!!_this3.settings.closeOnBlur && _this3.manageBlurClose();
 			_this3.toggleAttributes();
 			_this3.toggleState();
 			!!_this3.settings.callback && typeof _this3.settings.callback === 'function' && _this3.settings.callback.call(_this3);
