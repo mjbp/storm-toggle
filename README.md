@@ -67,6 +67,7 @@ CSS
 	callback: false, //function to fire after each toggle
 	focus: false, //focus on first focusable child node of the target element
 	trapTab: false //trap tab in the target element
+	closeOnBlur: false //close the target node on losing focus from the target node and any of the toggles
 }
 ```
 e.g.
