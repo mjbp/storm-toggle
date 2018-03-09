@@ -6,17 +6,18 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjbp/storm-toggle.git"
+    "url": "https://github.com/stormid/storm-toggle.git"
   },
   "bugs": {
-    "url": "https://github.com/mjbp/storm-toggle/issues"
+    "url": "https://github.com/stormid/storm-toggle/issues"
   },
   "main": "dist/index.js",
   "scripts": {
     "build": "gulp build",
     "start": "gulp",
-    "test": "istanbul cover node_modules/mocha/bin/_mocha && codecov",
-    "test:watch": "NODE_ENV=test mocha --watch"
+    "test": "_mocha",
+    "test:watch": "NODE_ENV=test mocha --watch",
+    "test:coverage": "istanbul cover node_modules/mocha/bin/_mocha && codecov"
   },
   "browserify": {
     "transform": [

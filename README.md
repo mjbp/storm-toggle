@@ -1,7 +1,5 @@
 # Storm Toggle
 
-[![Build Status](https://travis-ci.org/mjbp/storm-toggle.svg?branch=master)](https://travis-ci.org/mjbp/storm-toggle)
-[![codecov.io](http://codecov.io/github/mjbp/storm-toggle/coverage.svg?branch=master)](http://codecov.io/github/mjbp/storm-toggle?branch=master)
 [![npm version](https://badge.fury.io/js/storm-toggle.svg)](https://badge.fury.io/js/storm-toggle)
 
 Accessible DOM state toggling for off-canvas and show/hide UI patterns.
@@ -85,7 +83,7 @@ npm run test
 ## Browser support
 This is module has both es6 and es5 distributions. The es6 version should be used in a workflow that transpiles.
 
-The es5 version depends upon Promises so all evergreen browsers are supported out of the box, ie9+ is supported with polyfills. ie8+ will work with even more polyfils for Array functions and eventListeners.
+The es5 version depends upon Object.assign so all evergreen browsers are supported out of the box, ie9+ is supported with polyfills. ie8+ will work with even more polyfils for Array functions and eventListeners.
 
 ## Dependencies
 None

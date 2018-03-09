@@ -1,6 +1,6 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 1.2.1: Wed, 14 Feb 2018 11:38:12 GMT
+ * @version 1.2.3: Fri, 09 Mar 2018 13:43:44 GMT
  * @author stormid
  * @license MIT
  */
