@@ -5,8 +5,8 @@
 Accessible DOM state toggling for off-canvas and show/hide UI patterns.
 
 ## Usage
+
 HTML
-=======
 ```
 <button class="js-toggle-btn">Menu</button>
 <nav class="js-toggle" data-toggle="js-toggle-btn">...</nav>
