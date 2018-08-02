@@ -1,6 +1,6 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 1.2.5: Fri, 29 Jun 2018 12:34:40 GMT
+ * @version 1.2.5: Thu, 02 Aug 2018 10:35:08 GMT
  * @author stormid
  * @license MIT
  */
@@ -76,13 +76,11 @@ var componentPrototype = {
 		return [].slice.call(this.node.querySelectorAll(FOCUSABLE_ELEMENTS.join(',')));
 	},
 
-	toggleAttributes: function toggleAttributes() {
+	toggleState: function toggleState() {
 		this.isOpen = !this.isOpen;
 		this.toggles.forEach(function (toggle) {
 			toggle.setAttribute('aria-expanded', toggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
 		});
-	},
-	toggleState: function toggleState() {
 		this.classTarget.classList.remove(this.animatingClass);
 		this.classTarget.classList.toggle(this.statusClass);
 	},
@@ -146,7 +144,6 @@ var componentPrototype = {
 		window.setTimeout(function () {
 			!!_this3.settings.focus && _this3.focusableChildren && _this3.manageFocus();
 			!!_this3.settings.closeOnBlur && _this3.manageBlurClose();
-			_this3.toggleAttributes();
 			_this3.toggleState();
 			!!_this3.settings.callback && typeof _this3.settings.callback === 'function' && _this3.settings.callback.call(_this3);
 		}, delay);

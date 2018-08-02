@@ -37,13 +37,11 @@ export default {
 	getFocusableChildren() {
 		return [].slice.call(this.node.querySelectorAll(FOCUSABLE_ELEMENTS.join(',')));
 	},
-	toggleAttributes: function(){
+	toggleState: function(){
 		this.isOpen = !this.isOpen;
 		this.toggles.forEach(toggle => {
 			toggle.setAttribute('aria-expanded', toggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
 		});
-	},
-	toggleState: function(){
 		this.classTarget.classList.remove(this.animatingClass);
 		this.classTarget.classList.toggle(this.statusClass);
 	},
@@ -105,7 +103,6 @@ export default {
 		window.setTimeout(() => {
 			(!!this.settings.focus && this.focusableChildren) && this.manageFocus();
 			!!this.settings.closeOnBlur && this.manageBlurClose();
-			this.toggleAttributes();
 			this.toggleState();
 			(!!this.settings.callback && typeof this.settings.callback === 'function') && this.settings.callback.call(this);
 		}, delay);
