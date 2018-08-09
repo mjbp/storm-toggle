@@ -22,7 +22,7 @@ export default {
 	},
 	initToggles() {
 		this.toggles.forEach(toggle => {
-			toggle.setAttribute('role', 'button');
+			if(toggle.tagName !== 'BUTTON') toggle.setAttribute('role', 'button');
 			toggle.setAttribute('aria-controls', this.node.getAttribute('id'));
 			toggle.setAttribute('aria-expanded', 'false');
 			TRIGGER_EVENTS.forEach(ev => {

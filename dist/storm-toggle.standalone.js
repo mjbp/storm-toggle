@@ -1,6 +1,6 @@
 /**
  * @name storm-toggle: Toggle UI state accessibly
- * @version 1.2.5: Thu, 02 Aug 2018 10:35:08 GMT
+ * @version 1.3.0: Thu, 09 Aug 2018 15:00:00 GMT
  * @author stormid
  * @license MIT
  */
@@ -60,7 +60,7 @@ var componentPrototype = {
 		var _this = this;
 
 		this.toggles.forEach(function (toggle) {
-			toggle.setAttribute('role', 'button');
+			if (toggle.tagName !== 'BUTTON') toggle.setAttribute('role', 'button');
 			toggle.setAttribute('aria-controls', _this.node.getAttribute('id'));
 			toggle.setAttribute('aria-expanded', 'false');
 			TRIGGER_EVENTS.forEach(function (ev) {
